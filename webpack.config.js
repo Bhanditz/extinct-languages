@@ -1,11 +1,11 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const BUILD_DIR = path.resolve(__dirname, 'src/client/public');
-const APP_DIR = path.resolve(__dirname, 'src/src');
+const BUILD_DIR = path.resolve(__dirname, 'public/');
+const APP_DIR = path.resolve(__dirname, 'src/');
 
 const config = {
-  entry: APP_DIR + '/index.jsx',
+  entry: APP_DIR + '/index.js',
   module: {
     loaders: [
       {
@@ -13,11 +13,11 @@ const config = {
         include: APP_DIR,
         loader: 'babel',
       },
-      {
-        test: /\.jsx?/,
-        include: APP_DIR,
-        loader: 'eslint-loader',
-      },
+      // {
+      //   test: /\.jsx?/,
+      //   include: APP_DIR,
+      //   loader: 'eslint-loader',
+      // },
     ],
   },
 

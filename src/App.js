@@ -1,13 +1,14 @@
 import React from 'react';
-import Graph from './components/Graph';
-import Control from './components/Control';
+import GraphContainer from './containers/GraphContainer';
+import ControlContainer from './containers/ControlContainer';
 import './App.css';
 
 const App = (props) => {
+  console.log(props);
   return (
     <div>
-      <Graph {...props} />
-      <Control {...props} />
+      <GraphContainer {...props} />
+      <ControlContainer {...props} />
     </div>
   );
 };

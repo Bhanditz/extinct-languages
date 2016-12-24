@@ -1,4 +1,4 @@
-ID,Name in English,Name in French,Name in Spanish,Countries,Country codes alpha 3,ISO639-3 codes,Degree of endangerment,Alternate names,Name in the language,Number of speakers,Sources,Latitude,Longitude,Description of the location
+﻿export const langs = `ID,Name in English,Name in French,Name in Spanish,Countries,Country codes alpha 3,ISO639-3 codes,Degree of endangerment,Alternate names,Name in the language,Number of speakers,Sources,Latitude,Longitude,Description of the location
 1022,South Italian,italien du sud,napolitano-calabrés,Italy,ITA,nap,Vulnerable,Neapolitan; Neapolitan-Calabrese; неаполитанский; неаполитанско-калабрийский,,7500000,,40.9798,15.249,"Campania, Lucania (Basilicata), Abruzzi (Abruzzo), Molise, northern Calabria, northern and central Apulia (Puglia), southern Lazio and Marche as well as easternmost Umbria"
 1023,Sicilian,sicilien,siciliano,Italy,ITA,scn,Vulnerable,,,5000000,,37.4399,14.5019,"Sicily (Sicilia), southern and central Calabria and southern Apulia (Puglia); a large number of émigré communities"
 383,Low Saxon,bas-saxon,bajo sajón,"Germany, Denmark, Netherlands, Poland, Russian Federation","DEU, DNK, NLD, POL, RUS","act, drt, frs, gos, nds, sdz, stl, twd, vel, wep",Vulnerable,"Low German, Niedersächsisch, Nedersaksisch, Niederdeutsch, Plattdeutsch ",Neddersassisch,4800000,,53.4029,10.3601,"northern Germany, the north-eastern part of the Netherlands, border regions of Denmark and Poland; émigré communities in the Russian Federation and elsewhere"
@@ -4187,4 +4187,4 @@ Patrick Heinrich: What leaves a mark should no longer stain: Progressive erasure
 2018,Yucuna,yucuna,yucuna,Colombia,COL,ycn,Definitely endangered,,,,,-1.2633,-70.664,
 2015,Yurutí (Colombia),yurutí (Colombie),yurutí (Colombia),Colombia,COL,yui,Definitely endangered,,,,,1.137,-70.2136,
 2716,Zangskari,zangskari,zangskari,"India, Pakistan","IND, PAK",zau,Definitely endangered,"Zangs-dkar, Z’angkar",,,,34.0833,76.85,
-2177,Zidgali,zidgali,zidgali,Oman,OMN,,Critically endangered,"Zidjali, Zadjali",,,No authoritative source found yet; information is based on informal sources.,23.4027,58.0957,Capital area of Muscat
+2177,Zidgali,zidgali,zidgali,Oman,OMN,,Critically endangered,"Zidjali, Zadjali",,,No authoritative source found yet; information is based on informal sources.,23.4027,58.0957,Capital area of Muscat`;

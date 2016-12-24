@@ -2,7 +2,10 @@ import React from 'react';
 
 const Control = (props) => {
   return (
-    <h1>Control</h1>
+    <div>
+      <h2>A Control Panel Goes here</h2>
+      <p>Switches and options</p>
+    </div>
   );
 };
 
