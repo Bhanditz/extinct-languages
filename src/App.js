@@ -4,7 +4,6 @@ import ControlContainer from './containers/ControlContainer';
 import './App.css';
 
 const App = (props) => {
-  console.log(props);
   return (
     <div>
       <GraphContainer {...props} />

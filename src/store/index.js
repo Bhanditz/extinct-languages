@@ -10,10 +10,10 @@ const DATA = csvParse(langs).map(d => {
     pop: +d['Number of speakers'],
     codes: d['Country codes alpha 3'].split(', '),
   };
-});
+}).sort((a, b) => a.pop - b.pop);
 
 const PAD = 60;
-const STYLES = { width: 700 - PAD, height: 300 - PAD };
+const STYLES = { width: 940 - PAD, height: 400 - PAD, radius: 3, pad: PAD };
 
 const STORE = {
   data: DATA,
