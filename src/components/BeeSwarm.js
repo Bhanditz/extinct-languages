@@ -7,7 +7,8 @@ const getSwarmData = (props) => {
   const nodes = props.data;
   const simulation = forceSimulation(nodes)
       .force('x', forceX(d => props.scales.x(d.pop)).strength(1))
-      .force('y', forceY(props.styles.height / 2))
+//      .force('y', forceY(props.styles.height / 2))
+       .force('y', forceY(d => props.scales.y(d.status)))
       .force('collide', forceCollide(props.styles.radius + 1.5))
       .stop();
   for (let i = 0; i < 400; i += 1) simulation.tick();

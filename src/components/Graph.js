@@ -1,5 +1,5 @@
 import React from 'react';
-import { scaleOrdinal, scaleLog, scaleLinear } from 'd3-scale';
+import { scaleOrdinal, scaleLog } from 'd3-scale';
 import { extent } from 'd3-array';
 import BeeSwarm from './BeeSwarm';
 
@@ -18,8 +18,9 @@ const getScales = (props) => {
     x: scaleLog()
         .domain(extent(props.data, d => d.pop))
         .range([PAD, props.styles.width - PAD]),
-    t: scaleLinear()
-        .range([PAD, props.styles.width - PAD]),
+    y: scaleOrdinal()
+        .domain(statusColors.map(d => d.status))
+        .range([0.6, 0.55, 0.5, 0.45, 0.4].map(d => d * (props.styles.height - PAD))),
     color: scaleOrdinal()
             .domain(statusColors.map(d => d.status))
             .range(statusColors.map(d => d.color)),
