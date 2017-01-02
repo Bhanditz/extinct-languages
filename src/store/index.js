@@ -1,32 +1,20 @@
-import { langs } from '../data/data.csv';
-import { csvParse } from 'd3-dsv';
-
-const DATA = csvParse(langs).map(d => {
-  return {
-    name: d['Name in English'],
-    status: d['Degree of endangerment'],
-    lat: +d.Latitude,
-    lon: +d.Longitude,
-    pop: +d['Number of speakers'],
-    codes: d['Country codes alpha 3'].split(', '),
-  };
-}).sort((a, b) => a.status - b.status);
-
-const PAD = 60;
-const STYLES = { width: 940 - PAD, height: 440 - PAD, radius: 3, pad: PAD };
+import DATA from './beeSwarm';
+import { plotStyle } from './styles';
 
 const DUMMY = { name: 'LANG', pop: 1234, status: 'OKAY' };
 
-// TODO pre-render beeswarm
+const ALL = DATA.filter(d => d.key === 'All')[0].values;
 
 const STORE = {
   dataFixed: DATA,
-  dataRender: DATA,
-  graphStyles: STYLES,
+  dataRender: ALL,
+  graphStyles: plotStyle,
   filterStatus: 'All',
   selectedLang: DUMMY,
   mapStyles: { width: 300, height: 100 },
 //  controlStyles: CONTROL_STYLES,
 };
+
+console.log(STORE);
 
 export default STORE;
