@@ -1,10 +1,5 @@
 export const updateData = (data, filterTerm) => {
-  let filteredData;
-  if (filterTerm === 'All') {
-    filteredData = data;
-  } else {
-    filteredData = data.filter(d => d.status === filterTerm);
-  }
+  const filteredData = data.filter(d => d.key === filterTerm)[0].values;
   return {
     type: 'UPDATE_FILTERED_DATA',
     renderData: filteredData,

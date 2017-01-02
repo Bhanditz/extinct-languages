@@ -4,6 +4,9 @@ import * as Actions from '../actions';
 import Control from '../components/Control';
 
 const mapStatetoProps = (state) => {
+  // data: [{status, values}, ...]
+  // filterTerm: 'status',
+  // selectedLang: {name, pop, status, ...}
   return {
     data: state.dataFixed,
     styles: state.mapStyles,

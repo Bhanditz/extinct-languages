@@ -2,7 +2,7 @@ import DATA from './beeSwarm';
 import { plotStyle } from './styles';
 
 const DUMMY = { name: 'LANG', pop: 1234, status: 'OKAY' };
-
+// [{key, values}, ...] -> [{All, values}] -> values
 const ALL = DATA.filter(d => d.key === 'All')[0].values;
 
 const STORE = {
@@ -14,7 +14,5 @@ const STORE = {
   mapStyles: { width: 300, height: 100 },
 //  controlStyles: CONTROL_STYLES,
 };
-
-console.log(STORE);
 
 export default STORE;

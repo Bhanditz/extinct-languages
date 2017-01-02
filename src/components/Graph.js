@@ -1,5 +1,5 @@
 import React from 'react';
-import { scaleOrdinal, scaleLog } from 'd3-scale';
+import { scaleOrdinal, scaleLinear } from 'd3-scale';
 import { extent } from 'd3-array';
 import BeeSwarm from './BeeSwarm';
 
@@ -11,16 +11,19 @@ const statusColors = [
   { status: 'Extinct', color: 'black' },
 ];
 
-// TODO figure out y-scale
+// TODO make y-scale dependent on number of elements
+//  i.e. an inverse relationship between y-extent and
+//  padding
+
 const getScales = (props) => {
   const PAD = props.styles.pad;
   return {
-    x: scaleLog()
-        .domain(extent(props.data, d => d.pop))
+    x: scaleLinear()
+        .domain(extent(props.data, d => d.x))
         .range([PAD, props.styles.width - PAD]),
-    y: scaleOrdinal()
-        .domain(statusColors.map(d => d.status))
-        .range([0.6, 0.55, 0.5, 0.45, 0.4].map(d => d * (props.styles.height - PAD))),
+    y: scaleLinear()
+        .domain(extent(props.data, d => d.y))
+        .range([props.styles.height - PAD, PAD]),
     color: scaleOrdinal()
             .domain(statusColors.map(d => d.status))
             .range(statusColors.map(d => d.color)),

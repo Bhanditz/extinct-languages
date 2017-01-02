@@ -1,12 +1,13 @@
 import { csvParse } from 'd3-dsv';
-import { nest } from 'd3-collection'
+import { nest } from 'd3-collection';
 import { forceSimulation, forceX, forceY, forceCollide } from 'd3-force';
-import { scaleLog, scaleOrdinal } from 'd3-scale';
+import { scaleLog } from 'd3-scale';
 import { extent } from 'd3-array';
 import { langs } from '../data/data.csv';
 import { plotStyle } from './styles';
 
 const getScales = (data, style) => {
+  // use data = d.values to determine scale
   return {
     x: scaleLog()
         .domain(extent(data, d => d.pop))
@@ -15,21 +16,25 @@ const getScales = (data, style) => {
 };
 
 const beeSwarmer = (style) => {
+  // returns a function that runs beeSwarm simulation
   const rad = style.radius;
   const hgt = style.height;
   return (obj) => {
+    // {key, values} -> {key, beeSwarm(values)}
     const nodes = obj.values;
+    const iterations = nodes.length / 5;
     const sc = getScales(nodes, style);
     const simulation = forceSimulation(nodes)
       .force('x', forceX(d => sc.x(d.pop)).strength(1))
       .force('y', forceY(hgt / 2))
       .force('collide', forceCollide(rad + 1))
       .stop();
-    for (let i = 0; i < 400; i += 1) simulation.tick();
+    for (let i = 0; i < iterations; i += 1) simulation.tick();
     return { key: obj.key, values: nodes };
   };
 };
 
+// Import data, filter out languages with pop = 0
 const DATA = csvParse(langs).map(d => {
   return {
     name: d['Name in English'],
@@ -39,8 +44,7 @@ const DATA = csvParse(langs).map(d => {
     pop: +d['Number of speakers'],
     codes: d['Country codes alpha 3'].split(', '),
   };
-}).filter(d => d.pop !== 0)
-  .sort((a, b) => a.status - b.status);
+}).filter(d => d.pop !== 0);
 
 const statusDATA = nest()
   .key(d => d.status)
