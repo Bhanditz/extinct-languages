@@ -26,6 +26,7 @@ const renderCircles = (props) => {
       opacity: 0.7,
       strokeWidth: 0.5,
       key: i,
+      onClick: () => props.actions.updateSelectedLang(d),
     };
 
     return <circle {...circleProps} />;

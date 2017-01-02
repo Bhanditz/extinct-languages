@@ -20,11 +20,23 @@ const renderButton = (props) => {
   };
 };
 
+const renderLightBox = (props) => {
+  const d = props.selectedLang;
+  return (
+    <div>
+      <p>Name: {d.name}</p>
+      <p>Speakers: {d.pop}</p>
+      <p>Status: {d.status}</p>
+    </div>
+  );
+};
+
 const Control = (props) => {
   return (
     <div>
       <h2>A Control Panel Goes here</h2>
       {statusArr.map(renderButton(props))}
+      {renderLightBox(props)}
     </div>
   );
 };

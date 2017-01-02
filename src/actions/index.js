@@ -11,3 +11,10 @@ export const updateData = (data, filterTerm) => {
     filterStatus: filterTerm,
   };
 };
+
+export const updateSelectedLang = (datum) => {
+  return {
+    type: 'UPDATE_SELECTED_LANG',
+    selectedLang: datum,
+  };
+};

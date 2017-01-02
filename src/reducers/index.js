@@ -6,6 +6,11 @@ const reducer = (state = {}, action) => {
         dataRender: action.renderData,
         filterStatus: action.filterStatus,
       };
+    case 'UPDATE_SELECTED_LANG':
+      return {
+        ...state,
+        selectedLang: action.selectedLang,
+      };
     default:
       return state;
   }

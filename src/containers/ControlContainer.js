@@ -6,7 +6,9 @@ import Control from '../components/Control';
 const mapStatetoProps = (state) => {
   return {
     data: state.dataFixed,
-    styles: state.styles,
+    styles: state.mapStyles,
+    filterTerm: state.filterTerm,
+    selectedLang: state.selectedLang,
   };
 };
 
