@@ -7,4 +7,5 @@ export const plotStyle = {
   height: plotHEIGHT - plotPAD,
   radius: 3,
   pad: plotPAD,
+  className: 'plotComponent',
 };

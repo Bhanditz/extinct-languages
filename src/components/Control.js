@@ -14,26 +14,12 @@ const renderButton = (props) => {
   };
 };
 
-const renderLightBox = (props) => {
-  // seletedLang comes from the store. No calculations done here.
-  const d = props.selectedLang;
-  return (
-    <div>
-      <p>Name: {d.name}</p>
-      <p>Speakers: {d.pop}</p>
-      <p>Status: {d.status}</p>
-    </div>
-  );
-};
-
 const Control = (props) => {
-  // render each button
-  // render the lightbox
   return (
-    <div>
-      <h2>A Control Panel Goes here</h2>
+    // TODO put class in the store
+    <div className={'controlComponent'}>
+      <h4>Filter by Status</h4>
       {props.data.map(renderButton(props))}
-      {renderLightBox(props)}
     </div>
   );
 };

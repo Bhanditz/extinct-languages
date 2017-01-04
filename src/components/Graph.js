@@ -32,7 +32,7 @@ const getScales = (props) => {
 
 const Graph = (props) => {
   return (
-    <svg width={props.styles.width} height={props.styles.height}>
+    <svg width={props.styles.width} height={props.styles.height} className={props.styles.className}>
       <BeeSwarm
         {...props}
         scales={getScales(props)}
