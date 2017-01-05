@@ -2,7 +2,7 @@ import React from 'react';
 
 const MapCoordinates = (props) => {
   return (
-    <p>MAP</p>
+    <text x={150} y={100}>Map Goes Here</text>
   );
 };
 

@@ -1,7 +1,7 @@
 import { csvParse } from 'd3-dsv';
 import { nest } from 'd3-collection';
 import { forceSimulation, forceX, forceY, forceCollide } from 'd3-force';
-import { scaleLog } from 'd3-scale';
+import { scaleLog, scaleOrdinal } from 'd3-scale';
 import { extent } from 'd3-array';
 import { langs } from '../data/data.csv';
 import { plotStyle } from './styles';
@@ -34,11 +34,25 @@ const beeSwarmer = (style) => {
   };
 };
 
+const shortenName = scaleOrdinal()
+                      .domain(['Vulnerable',
+                        'Definitely endangered',
+                        'Critically endangered',
+                        'Severely endangered',
+                        'Extinct',
+                      ])
+                      .range(['Vulnerable',
+                        'Definite',
+                        'Critical',
+                        'Severe',
+                        'Extinct',
+                      ]);
+
 // Import data, filter out languages with pop = 0
 const DATA = csvParse(langs).map(d => {
   return {
     name: d['Name in English'],
-    status: d['Degree of endangerment'],
+    status: shortenName(d['Degree of endangerment']),
     lat: +d.Latitude,
     lon: +d.Longitude,
     pop: +d['Number of speakers'],

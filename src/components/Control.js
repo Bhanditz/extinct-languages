@@ -16,10 +16,11 @@ const renderButton = (props) => {
 
 const Control = (props) => {
   return (
-    // TODO put class in the store
-    <div className={'controlComponent'}>
+    <div>
       <h4>Filter by Status</h4>
-      {props.data.map(renderButton(props))}
+      <div>
+        {props.data.map(renderButton(props))}
+      </div>
     </div>
   );
 };
