@@ -12,6 +12,14 @@ const getScales = (data, style) => {
     x: scaleLog()
         .domain(extent(data, d => d.pop))
         .range([0, style.width]),
+    y: scaleOrdinal()
+        .domain(['Vulnerable',
+          'Definite',
+          'Critical',
+          'Severe',
+          'Extinct',
+        ])
+        .range([1.2, 1.1, 1, 0.9, 0.8].map(d => d * (style.height / 2))),
   };
 };
 
@@ -26,7 +34,7 @@ const beeSwarmer = (style) => {
     const sc = getScales(nodes, style);
     const simulation = forceSimulation(nodes)
       .force('x', forceX(d => sc.x(d.pop)).strength(1))
-      .force('y', forceY(hgt / 2))
+      .force('y', forceY(d => sc.y(d.status)))
       .force('collide', forceCollide(rad + 1))
       .stop();
     for (let i = 0; i < iterations; i += 1) simulation.tick();
@@ -34,25 +42,24 @@ const beeSwarmer = (style) => {
   };
 };
 
-const shortenName = scaleOrdinal()
-                      .domain(['Vulnerable',
-                        'Definitely endangered',
-                        'Critically endangered',
-                        'Severely endangered',
-                        'Extinct',
-                      ])
-                      .range(['Vulnerable',
-                        'Definite',
-                        'Critical',
-                        'Severe',
-                        'Extinct',
-                      ]);
-
 // Import data, filter out languages with pop = 0
 const DATA = csvParse(langs).map(d => {
+  const nameScale = scaleOrdinal()
+          .domain(['Vulnerable',
+            'Definitely endangered',
+            'Critically endangered',
+            'Severely endangered',
+            'Extinct',
+          ])
+          .range(['Vulnerable',
+            'Definite',
+            'Critical',
+            'Severe',
+            'Extinct',
+          ]);
   return {
     name: d['Name in English'],
-    status: shortenName(d['Degree of endangerment']),
+    status: nameScale(d['Degree of endangerment']),
     lat: +d.Latitude,
     lon: +d.Longitude,
     pop: +d['Number of speakers'],

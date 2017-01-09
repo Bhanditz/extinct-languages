@@ -16,7 +16,7 @@ const renderButton = (props) => {
 
 const Control = (props) => {
   return (
-    <div>
+    <div className={'three columns'}>
       <h4>Filter by Status</h4>
       <div>
         {props.data.map(renderButton(props))}
