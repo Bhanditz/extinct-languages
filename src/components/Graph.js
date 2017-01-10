@@ -7,9 +7,9 @@ import Axis from './Axis';
 // { status, color } data
 const statusColors = [
   { status: 'Vulnerable', color: '#fee5d9' },
-  { status: 'Definitely endangered', color: '#fcae91' },
-  { status: 'Criticallly endangered', color: '#fb6a4a' },
-  { status: 'Severely endangered', color: '#de2d26' },
+  { status: 'Definite', color: '#fcae91' },
+  { status: 'Critical', color: '#fb6a4a' },
+  { status: 'Severe', color: '#de2d26' },
   { status: 'Extinct', color: '#a50f15' },
 ];
 
@@ -64,11 +64,11 @@ const Graph = (props) => {
         height={props.styles.height}
         style={css}
       >
+        <Axis {...getSettings(props)} />
         <BeeSwarm
           {...props}
           scales={getScales(props)}
         />
-        <Axis {...getSettings(props)} />
       </svg>
     </div>
   );

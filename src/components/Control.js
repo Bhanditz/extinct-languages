@@ -1,11 +1,28 @@
 import React from 'react';
 
+// TODO organize color/status in store
+// { status, color } data
+const colors = [
+  '#fee5d9',
+  '#fcae91',
+  '#fb6a4a',
+  '#de2d26',
+  '#a50f15',
+  'black',
+];
+
 const renderButton = (props) => {
   // returns a function that renders a button for
   // data of the type [{key, values}].
   return (d, i) => {
+    const CSS = {
+      width: '100%',
+      borderColor: colors[i],
+      borderWidth: 2,
+    };
     const buttonProps = {
       onClick: () => props.actions.updateData(props.data, d.key),
+      style: CSS,
       key: i,
     };
     // render button with label d.key = status and

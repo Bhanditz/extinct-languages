@@ -9,7 +9,7 @@ const renderCircles = (props) => {
       r: props.styles.radius,
       fill: props.scales.color(d.status),
       stroke: props.scales.color(d.status),
-      opacity: 0.7,
+      opacity: 0.9,
       strokeWidth: 0.5,
       key: i,
       onClick: () => props.actions.updateSelectedLang(d),

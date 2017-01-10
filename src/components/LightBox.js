@@ -2,7 +2,7 @@ import React from 'react';
 import MapCoordinates from './MapCoordinates';
 
 const CSS = {
-  backgroundColor: 'grey',
+  backgroundColor: '#d5d5d5',
 };
 
 const LightBox = (props) => {
