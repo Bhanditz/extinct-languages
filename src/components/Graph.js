@@ -30,22 +30,39 @@ const getScales = (props) => {
     color: scaleOrdinal()
             .domain(statusColors.map(d => d.status))
             .range(statusColors.map(d => d.color)),
+    pop: scaleLog()
+          .domain(extent(props.data, d => d.pop))
+          .range([0, props.styles.width]),
   };
 };
 
+// TODO this is hacky af
+
 // props --> { props for axes }
 const getSettings = (props) => {
-  const sc = scaleLog()
-              .domain(extent(props.data, d => d.pop))
-              .range([0, props.styles.width]);
-  const popArr = props.data.map(d => d.pop).sort((a, b) => a - b);
-  const percArr = [0.05, 0.15, 0.25, 0.35, 0.50, 0.75];
-  const percentiles = percArr.map(d => quantile(popArr, d)).map(d => sc(d));
+  // const sc = scaleLog()
+  //             .domain(extent(props.data, d => d.pop))
+  //             .range([0, props.styles.width]);
+  // const popArr = props.data.map(d => d.pop).sort((a, b) => a - b);
+  // const percArr = [0.05, 0.15, 0.25, 0.35, 0.50, 0.75];
+  // const percentiles = percArr.map(d => quantile(popArr, d))
+  //                     .map(d => {
+  //                       return {
+  //                         coord: sc(d),
+  //                         percentile: d,
+  //                       };
+  //                     });
+  const percScale = scaleLinear()
+                    //  .domain([0, 1])
+                      .range(extent(props.data, d => d.pop));
 
+  // const ticks = [0.1, 0.25, 0.35, 0.5, 0.65, 0.8];
+  const ticks = [0.00001, 0.0001, 0.001, 0.01, 0.1];
+  const percentiles = ticks.map(percScale);
   return {
     styles: props.styles,
     ticks: percentiles,
-    scale: getScales(props).x,
+    scales: getScales(props),
   };
 };
 
