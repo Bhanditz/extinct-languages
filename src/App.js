@@ -1,7 +1,9 @@
 import React from 'react';
-import GraphContainer from './containers/GraphContainer';
-import ControlContainer from './containers/ControlContainer';
-import LightBoxContainer from './containers/LightBoxContainer';
+// import GraphContainer from './containers/GraphContainer';
+// import ControlContainer from './containers/ControlContainer';
+// import LightBoxContainer from './containers/LightBoxContainer';
+import * as Plot from './Plot';
+import * as LightBox from './LightBox';
 import './App.css';
 
 const App = (props) => {
@@ -9,11 +11,10 @@ const App = (props) => {
     <div className={'container'}>
       <h1>Endangered Languages</h1>
       <div className={'row'}>
-        <GraphContainer {...props} />
-        <ControlContainer {...props} />
+        <Plot.Container {...props} />
       </div>
       <div className={'row'}>
-        <LightBoxContainer {...props} />
+        <LightBox.Container {...props} />
       </div>
     </div>
   );

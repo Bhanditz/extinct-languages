@@ -6,9 +6,9 @@ import App from './App';
 import STORE from './store';
 import Reducer from './reducers';
 
-import './stylesheets/normalize.css';
-import './stylesheets/skeleton.css';
-import './index.css';
+// import './stylesheets/normalize.css';
+// import './stylesheets/skeleton.css';
+// import './index.css';
 
 const store = createStore(Reducer, STORE);
 

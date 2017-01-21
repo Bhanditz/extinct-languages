@@ -3,8 +3,9 @@ const reducer = (state = {}, action) => {
     case 'UPDATE_FILTERED_DATA':
       return {
         ...state,
-        dataRender: action.renderData,
-        filterStatus: action.filterStatus,
+        // dataRender: action.renderData,
+        // filterStatus: action.filterStatus,
+        showStatus: action.showStatus,
       };
     case 'UPDATE_SELECTED_LANG':
       return {
